@@ -1,0 +1,5 @@
+{
+    "installCommand": "echo 'Skipping install because of corporate proxy'",
+    "buildCommand": "echo 'Skipping build because it is already built locally'",
+    "outputDirectory": "dist"
+}

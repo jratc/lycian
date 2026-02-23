@@ -8,6 +8,7 @@ export type TrekDay = {
     activities: string[];
     logistics: string;
     accommodation: string;
+    startCoordinates?: [number, number]; // lat, lng for the starting point
     coordinates?: [number, number]; // lat, lng for the overnight/destination
 };
 
@@ -25,6 +26,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Flights all day on Wed 20. Transfer to Kaleiçi.",
         accommodation: "White Garden Hotel (Adults Only) - Kaleiçi Kılıçaslan Mah. Hesapçi Geçidi No: 9, Antalya",
+        startCoordinates: [41.0082, 28.9784], // Istanbul
         coordinates: [36.8841, 30.7056] // Antalya
     },
     {
@@ -41,6 +43,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Transfer from Antalya to Hisarcandir trails head.",
         accommodation: "Goynuk Canyon Pension or Local Homestay",
+        startCoordinates: [36.8222, 30.5408], // Hisarcandir
         coordinates: [36.6667, 30.5500] // Göynük
     },
     {
@@ -56,6 +59,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Hike fully loaded or utilize luggage transfer.",
         accommodation: "Sevim's Village House (Traditional homestay) or Local Pansiyon",
+        startCoordinates: [36.6667, 30.5500], // Göynük
         coordinates: [36.5833, 30.4500] // Yayla Kuzdere approx
     },
     {
@@ -71,6 +75,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Medium difficulty walk bridging ancient Roman roads.",
         accommodation: "Caner Mountain Hotel or Gedelme Pansiyon",
+        startCoordinates: [36.5833, 30.4500], // Yayla Kuzdere
         coordinates: [36.5667, 30.5167] // Gedelme
     },
     {
@@ -86,6 +91,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "High-altitude setting; prepare for temperature changes.",
         accommodation: "Olympos Mountain Lodge or Beycik Panorama Camping",
+        startCoordinates: [36.5667, 30.5167], // Gedelme
         coordinates: [36.4333, 30.4667] // Beycik
     },
     {
@@ -102,6 +108,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Transfer required down to the coast.",
         accommodation: "Cemils Guest House, Hane-i Keyif Pension, or Turkuaz Bungalows",
+        startCoordinates: [36.4333, 30.4667], // Beycik
         coordinates: [36.4000, 30.4833] // Çıralı
     },
     {
@@ -117,6 +124,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Long hiking day; carry plenty of water.",
         accommodation: "Deniz Hotel, Adrasan Shambala, or Engin Pansiyon",
+        startCoordinates: [36.4000, 30.4833], // Çıralı
         coordinates: [36.3167, 30.4667] // Adrasan
     },
     {
@@ -131,6 +139,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Book boat tours in advance through local pansiyons.",
         accommodation: "Same as Day 7 (Deniz Hotel, Adrasan Shambala, etc.)",
+        startCoordinates: [36.3167, 30.4667], // Adrasan
         coordinates: [36.3167, 30.4667] // Adrasan
     },
     {
@@ -147,6 +156,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Hike is approx 7 hours. Transfer from Karaöz to Demre is 45 mins. Avoid walking greenhouses.",
         accommodation: "Santa Suites, Andriake Beach Club, or Local Demre Pansiyon",
+        startCoordinates: [36.3167, 30.4667], // Adrasan
         coordinates: [36.2444, 29.9833] // Demre
     },
     {
@@ -162,6 +172,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Full day of historical exploration in Demre.",
         accommodation: "Same as Day 9 (Santa Suites, Demre Pansiyon, etc.)",
+        startCoordinates: [36.2444, 29.9833], // Demre
         coordinates: [36.2444, 29.9833] // Demre
     },
     {
@@ -177,6 +188,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Long coastal walking day.",
         accommodation: "Telemen'in Evi Pansiyon, Likya Pansiyon, or Ankh Pansiyon",
+        startCoordinates: [36.2444, 29.9833], // Demre
         coordinates: [36.1956, 29.8483] // Üçağız
     },
     {
@@ -193,6 +205,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Short walking day; mostly aquatic and historical exploration.",
         accommodation: "Simena Pansiyon (Waterfront), Ekin Pansiyon, or Theimussa Hotel",
+        startCoordinates: [36.1956, 29.8483], // Üçağız
         coordinates: [36.1911, 29.8603] // Simena / Kaleköy
     },
     {
@@ -209,6 +222,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Pre-arrange the boat pickup from Aperlai.",
         accommodation: "Hotel Sonne (Adults Only) - Eski Kilise Cad.No. 6 Antalya, Kaş",
+        startCoordinates: [36.1956, 29.8483], // Üçağız
         coordinates: [36.2000, 29.6333] // Kaş
     },
     {
@@ -225,6 +239,7 @@ export const itinerary: TrekDay[] = [
         ],
         logistics: "Transfer from Kaş to Dalaman Airport. Flight departs 10:25.",
         accommodation: "Hotel Turkish House Istanbul (Same as start)",
+        startCoordinates: [36.2000, 29.6333], // Kaş
         coordinates: [41.0082, 28.9784] // Istanbul
     }
 ];

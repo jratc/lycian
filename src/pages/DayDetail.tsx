@@ -1,6 +1,31 @@
 import { useParams, Link } from 'react-router-dom';
 import { itinerary } from '../lib/itinerary';
 import { ChevronLeft, MapPin, CheckCircle2, BedDouble } from 'lucide-react';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import { useEffect } from 'react';
+
+// Fix for default marker icons in React-Leaflet
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
+
+// Component to handle auto-zooming Map bounds to both coordinates
+const MapBounds = ({ start, end }: { start?: [number, number]; end?: [number, number] }) => {
+    const map = useMap();
+    useEffect(() => {
+        if (start && end) {
+            const bounds = L.latLngBounds([start, end]);
+            map.fitBounds(bounds, { padding: [50, 50] });
+        } else if (end) {
+            map.setView(end, 12);
+        }
+    }, [map, start, end]);
+    return null;
+};
 
 export default function DayDetail() {
     const { id } = useParams();
@@ -56,6 +81,46 @@ export default function DayDetail() {
                                 <p className="text-sm text-slate-700 font-medium">{act}</p>
                             </div>
                         ))}
+                    </div>
+                </div>
+
+                {/* Map Section */}
+                <div className="bg-white rounded-3xl p-2 border border-slate-100 shadow-sm overflow-hidden">
+                    <div className="h-64 w-full rounded-2xl overflow-hidden relative z-0">
+                        <MapContainer
+                            center={day.coordinates || [36.2, 30.1]}
+                            zoom={10}
+                            zoomControl={false}
+                            className="w-full h-full z-0"
+                            scrollWheelZoom={false}
+                        >
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <MapBounds start={day.startCoordinates} end={day.coordinates} />
+
+                            {day.startCoordinates && (
+                                <Marker position={day.startCoordinates}>
+                                    <Popup className="font-sans text-sm font-bold">Start</Popup>
+                                </Marker>
+                            )}
+
+                            {day.coordinates && (
+                                <Marker position={day.coordinates}>
+                                    <Popup className="font-sans text-sm font-bold text-teal-700">Destination</Popup>
+                                </Marker>
+                            )}
+
+                            {day.startCoordinates && day.coordinates && (
+                                <Polyline
+                                    positions={[day.startCoordinates, day.coordinates]}
+                                    color="#0d9488"
+                                    weight={3}
+                                    dashArray="10, 10"
+                                />
+                            )}
+                        </MapContainer>
                     </div>
                 </div>
 
